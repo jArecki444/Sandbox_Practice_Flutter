@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sandbox_practice_flutter/animations/implicit/smooth_loading_indicator.dart';
 import 'package:sandbox_practice_flutter/animations/implicit/smooth_text_progress.dart';
 
+import 'cards/animated_progress_indicator.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -40,7 +42,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double _progress = 0.0;
+  double _progress = 0.3;
 
   void _incrementProgress() {
     setState(() {
@@ -58,48 +60,12 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    Visibility(
-                      visible: _progress > 0,
-                      child: Text('Standard ${_progress.toStringAsFixed(2)}'),
-                    ),
-                    const SizedBox(height: 10),
-                    CircularProgressIndicator(
-                      color: Colors.blue,
-                      value: _progress,
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 20),
-                Column(children: [
-                  Visibility(
-                    visible: _progress > 0,
-                    child: SmoothTextProgress(progress: _progress),
-                  ),
-                  const SizedBox(height: 10),
-                  SmoothLoadingIndicator(
-                    color: Colors.green,
-                    progress: _progress,
-                  ),
-                ]),
-              ],
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _incrementProgress,
-              child: const Text('Increment Progress'),
-            ),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          AnimatedProgressIndicatorCard(
+              incrementProgress: _incrementProgress, progress: _progress),
+        ],
       ),
     );
   }
