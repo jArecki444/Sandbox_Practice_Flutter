@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sandbox_practice_flutter/cards/animated_icons.dart';
 
 import 'cards/animated_progress_indicator.dart';
 
@@ -54,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           AnimatedProgressIndicatorCard(
               incrementProgress: _incrementProgress, progress: _progress),
+          AnimatedIconsCard(),
         ],
       ),
     );
