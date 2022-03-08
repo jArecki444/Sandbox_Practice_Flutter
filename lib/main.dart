@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sandbox_practice_flutter/animations/implicit/smooth_loading_indicator.dart';
+import 'package:sandbox_practice_flutter/animations/implicit/smooth_text_progress.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,12 +40,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double _progress = 0;
+  double _progress = 0.0;
 
   void _incrementProgress() {
     setState(() {
-      if (_progress >= 1) {
-        _progress = 0;
+      if (_progress >= 1.0) {
+        _progress = 0.0;
       } else {
         _progress = _progress + 0.1;
       }
@@ -61,9 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'Current progress $_progress',
-            ),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -72,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Visibility(
                       visible: _progress > 0,
-                      child: const Text('Standard Loading Indicator'),
+                      child: Text('Standard ${_progress.toStringAsFixed(2)}'),
                     ),
                     const SizedBox(height: 10),
                     CircularProgressIndicator(
@@ -85,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Column(children: [
                   Visibility(
                     visible: _progress > 0,
-                    child: const Text('Smooth Loading Indicator'),
+                    child: SmoothTextProgress(progress: _progress),
                   ),
                   const SizedBox(height: 10),
                   SmoothLoadingIndicator(
