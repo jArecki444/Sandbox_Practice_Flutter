@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Sandbox Practice Home Page'),
+      home: const MyHomePage(title: 'Sandbox Practice'),
     );
   }
 }
@@ -47,15 +47,35 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          AnimatedProgressIndicatorCard(
-              incrementProgress: _incrementProgress, progress: _progress),
-          AnimatedIconsCard(),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            pinned: false,
+            snap: false,
+            floating: false,
+            expandedHeight: 100.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(widget.title),
+              background: const FlutterLogo(),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              // The builder function returns a ListTile with a title that
+              // displays the index of the current item.
+              (context, index) => Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  AnimatedProgressIndicatorCard(
+                    incrementProgress: _incrementProgress,
+                    progress: _progress,
+                  ),
+                  AnimatedIconsCard(),
+                ],
+              ),
+              childCount: 4,
+            ),
+          ),
         ],
       ),
     );
