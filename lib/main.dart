@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sandbox_practice_flutter/cards/animated_icons.dart';
+import 'package:sandbox_practice_flutter/cards/barcode_scanner.dart';
 
 import 'cards/animated_progress_indicator.dart';
 
@@ -61,19 +62,18 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              // The builder function returns a ListTile with a title that
-              // displays the index of the current item.
               (context, index) => Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
+                  const BarcodeScannerCard(),
                   AnimatedProgressIndicatorCard(
                     incrementProgress: _incrementProgress,
                     progress: _progress,
                   ),
-                  AnimatedIconsCard(),
+                  const AnimatedIconsCard(),
                 ],
               ),
-              childCount: 4,
+              childCount: 1,
             ),
           ),
         ],
