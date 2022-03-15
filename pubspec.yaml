@@ -30,7 +30,9 @@ dependencies:
   before_after:
     git:
       url: https://github.com/xsahil03x/before_after
+  bloc_test: ^9.0.3
   cupertino_icons: ^1.0.2
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
   flutter_barcode_scanner: ^2.0.0
