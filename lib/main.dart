@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sandbox_practice_flutter/cards/animated_icons.dart';
 import 'package:sandbox_practice_flutter/cards/barcode_scanner.dart';
 import 'package:sandbox_practice_flutter/cards/compare_photos_slider.dart';
+import 'package:sandbox_practice_flutter/cards/counter/counter_page.dart';
 
 import 'cards/animated_progress_indicator.dart';
 
@@ -68,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   const BarcodeScannerCard(),
                   const ComparePhotosSliderCard(),
+                  const CounterPageCard(),
                   AnimatedProgressIndicatorCard(
                     incrementProgress: _incrementProgress,
                     progress: _progress,
